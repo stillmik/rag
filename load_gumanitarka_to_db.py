@@ -89,7 +89,7 @@ def validate_insertion(path_to_db="gumanitarka.db", db_uri="sqlite:///gumanitark
         print(db.dialect)
         print(db.get_usable_table_names())
         rows = db.run("SELECT * FROM gumanitarka LIMIT 5;")
-        print(f"Rows from langchain db:: {row}")
+        print(f"Rows from langchain db:: {rows}")
     except Exception as e:
         print(f"Exception:: {e}")
     finally:
