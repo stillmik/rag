@@ -82,7 +82,7 @@ def validate_insertion(path_to_db="gumanitarka.db", db_uri="sqlite:///gumanitark
         cursor.execute('''SELECT * FROM gumanitarka LIMIT 5''')
         rows = cursor.fetchall()
         for row in rows:
-            print(f"Row from db:: {row}")
+            print(f"Row from db:: {rows}")
 
 
         db = SQLDatabase.from_uri(db_uri)
