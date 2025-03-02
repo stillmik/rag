@@ -60,13 +60,13 @@ def insert_gumanitarka_to_db(cursor, path_to_db="gumanitarka.xls"):
         ))
 
 
-def run_code():
+def run_code(path_to_db):
     try:
-        conn = sqlite3.connect("gumanitarka.db")
+        conn = sqlite3.connect(path_to_db)
         cursor = conn.cursor()
         create_tables(cursor)
         conn.commit()
-        insert_gumanitarka_to_db(cursor, path_to_db="gumanitarka.xls")
+        insert_gumanitarka_to_db(cursor, path_to_db)
         conn.commit()
     except Exception as e:
         print(f"Exception:: {e}")
