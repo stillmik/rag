@@ -38,8 +38,8 @@ def create_tables(cursor):
     );''') # 21
 
 
-def insert_gumanitarka_to_db(cursor, path_to_db="gumanitarka.xls"):
-    df = pd.read_excel(path_to_db)
+def insert_gumanitarka_to_db(cursor, path_to_xls="gumanitarka.xls"):
+    df = pd.read_excel(path_to_xls)
     df['Order Date'] = pd.to_datetime(df['Order Date']).dt.strftime('%Y-%m-%d')
     df['Ship Date'] = pd.to_datetime(df['Ship Date']).dt.strftime('%Y-%m-%d')
 
@@ -60,13 +60,13 @@ def insert_gumanitarka_to_db(cursor, path_to_db="gumanitarka.xls"):
         ))
 
 
-def run_code(path_to_db):
+def run_code(path_to_db, path_to_xls):
     try:
         conn = sqlite3.connect(path_to_db)
         cursor = conn.cursor()
         create_tables(cursor)
         conn.commit()
-        insert_gumanitarka_to_db(cursor, path_to_db)
+        insert_gumanitarka_to_db(cursor, path_to_xls)
         conn.commit()
     except Exception as e:
         print(f"Exception:: {e}")
